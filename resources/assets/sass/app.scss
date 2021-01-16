@@ -1,0 +1,288 @@
+// Variables
+@import "variables";
+@import "fonts";
+
+// Vendors
+@import "vendor/weather-icons";
+@import "vendor/font-awesome/fontawesome";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-select/sass/bootstrap-select';
+@import '~tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4';
+
+body, html {
+  background-color: $dark-grey;
+  color: $light-grey;
+  font-family: Raleway;
+  height: 100%;
+
+  .quickview {
+    cursor: pointer;
+    padding: 20px;
+    background-color: #40BEF6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:nth-child(2n) {
+      background: #2c6392;
+    }
+
+    &:nth-child(3n) {
+      background: #ffb33c;
+    }
+
+    &:nth-child(4n) {
+      background: #ff934a;
+    }
+
+    &:nth-child(5n) {
+      background: #b365dd;
+    }
+
+    &:nth-child(6n) {
+      background: #b640f6;
+    }
+
+    &:nth-child(7n) {
+      background: #66965e;
+    }
+
+    &:nth-child(8n) {
+      background: #3e7c35;
+    }
+
+    &:nth-child(9n) {
+      background: #7c5435;
+    }
+
+    &:nth-child(10n) {
+      background: #96765e;
+    }
+
+    h1 {
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 0.6px;
+      text-align: center;
+      color: $light-grey;
+      font-size: 7rem;
+
+      @include media-breakpoint-down(xs) {
+        font-size: 5rem;
+      }
+    }
+
+    h2 {
+      font-size: 4rem;
+
+      @include media-breakpoint-down(md) {
+        font-size: 3rem;
+      }
+    }
+
+    h3 {
+      color: $light-grey;
+      font-size: 2.5rem;
+    }
+
+    .row {
+      font-size: 1.8rem;
+      margin-top: 35px;
+
+      @include media-breakpoint-down(xs) {
+        font-size: 1.4rem;
+        margin-top: 15px;
+      }
+
+      .additionals {
+        margin: 0 auto;
+
+        div {
+          display: inline-block;
+          margin: 0 15px;
+        }
+      }
+    }
+  }
+
+  #detailsModal {
+    h5 {
+      color: #343a40;
+    }
+
+    .modal-content {
+      .loading-overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: rgba(0,0,0, 0.4);
+        top: 0;
+        left: 0;
+        z-index: 2;
+        display: none;
+
+        &.active {
+          display: block;
+        }
+
+        .ani {
+          position: absolute;
+          width: 100px;
+          height: 70px;
+          margin: auto;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          text-align: center;
+
+          div {
+            background-color: $light-grey;
+            height: 100%;
+            width: 10px;
+            display: inline-block;
+            animation: waveStretchDelay 1.2s infinite ease-in-out;
+
+            &:nth-child(1) {
+              animation-delay: -1.2s;
+            }
+            &:nth-child(2) {
+              animation-delay: -1.1s;
+            }
+            &:nth-child(3) {
+              animation-delay: -1s;
+            }
+            &:nth-child(4) {
+              animation-delay: -0.9s;
+            }
+            &:nth-child(5) {
+              animation-delay: -0.8s;
+            }
+
+            @keyframes waveStretchDelay {
+              0%, 40%, 100% {
+                transform: scaleY(0.4);
+              }
+              20% {
+                transform: scaleY(1);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .modal-body {
+      .card {
+        .card-header {
+          padding: 5px 1.25rem;
+
+          h5 {
+            font-size: 1.1em;
+
+            @include media-breakpoint-down(xs) {
+              font-size: 1em;
+            }
+
+            a {
+              display: block;
+              color: $dark-grey !important;
+              text-decoration: none !important;
+              text-align: center;
+            }
+          }
+
+          [data-toggle="collapse"]:after {
+            font-family: 'Font Awesome 5 Free';
+            content: "\f077";
+            float: right;
+            color: $dark-btn;
+            font-size: 18px;
+            line-height: 22px;
+            transform: rotate(-180deg);
+            transition: transform .3s ease-in-out;
+          }
+
+          [data-toggle="collapse"].collapsed:after {
+            transform: rotate(0deg);
+          }
+        }
+
+        .card-body {
+          text-align: center;
+
+          .form-group {
+            text-align: left;
+            display: inline-block;
+
+            label {
+              color: $dark-btn;
+            }
+
+            input, select, button {
+              outline: none !important;
+              box-shadow: none !important;
+            }
+
+            @include media-breakpoint-down(md) {
+              &:nth-child(-n+3) {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .modal-footer {
+
+      .dropdown {
+        &.bootstrap-select {
+          outline: none !important;
+        }
+
+        span {
+          &.wi {
+            padding-right: 5px;
+          }
+        }
+
+        button {
+          &:focus {
+            outline: none !important;
+            box-shadow: none !important;
+          }
+
+          i {
+            padding-right: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    a {
+      display: block;
+      bottom: 4px;
+      right: 4px;
+      background: url(/img/donkey.svg);
+      width: 25px;
+      height: 36px;
+      margin-left: 1.2rem;
+      position: fixed;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.5;
+      transition: opacity .5s ease-out;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
