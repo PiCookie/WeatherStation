@@ -313,8 +313,6 @@ class ApiController extends Controller
     }
 
     private function _getDataForDevice(String $slug) {
-        error_log("_getDataForDevice");
-
         $device = Device::where('slug', $slug)->first();
 
         if ($device->status > Device::STATUS_RUN) {
