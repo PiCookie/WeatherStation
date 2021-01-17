@@ -256,8 +256,6 @@ class ApiController extends Controller
 
         if ($validation->passes()) {
             $data = $this->_getDataForDevice($request->device);
-            error_log("get humidity2");
-
             return response()->json(['humidity' => $data['sensors'][2]['value']]);
         }
 
