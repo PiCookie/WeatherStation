@@ -152,7 +152,7 @@ class ApiController extends Controller
         error_log("save data");
 
         // Delete old entries in database
-        $this->_deleteEntriesOlderThan7Days();
+        $this->_deleteOldEntries();
 
         $errors = [];
 
@@ -451,10 +451,11 @@ class ApiController extends Controller
     }
 
     /**
-     * Delete entries in DeviceSensorValue older than 7 days
+     * Delete old entries in DeviceSensorValue
+     * Older than 1 year
      */
-    private function _deleteEntriesOlderThan7Days(){
-        $date = Carbon::now()->subDays(7);
+    private function _deleteOldEntries(){
+        $date = Carbon::now()->subYear();
         DeviceSensorValue::where('created_at', '<=', $date)->delete();
     }
 }
